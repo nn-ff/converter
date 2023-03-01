@@ -1,0 +1,27 @@
+
+.main-page__wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: #c0becc;
+}
+
+.main-page {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  svg {
+    align-self: center;
+  }
+  .main-item {
+    padding: 15px;
+    color: #ACB78E;
+  &__title {
+    display: flex;
+    gap: 15px;
+  }
+  &__input {
+      padding: 5px;
+      margin-top: 5px;
+    }
+  }
+}
