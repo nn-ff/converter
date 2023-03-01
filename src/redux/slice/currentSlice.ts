@@ -20,7 +20,7 @@ const initialState: currentState = {
     id: 2,
     title: 'RUB',
   },
-  leftValue: '',
+  leftValue: '1',
   rightValue: '',
 };
 

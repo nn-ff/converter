@@ -39,12 +39,18 @@ const App: FC = () => {
     dispatch(setCurrentRight({ id: obj.id, title: obj.title }));
   };
   const onChangeLeft = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLeftPanel({ ...leftPanel, inputValue: e.target.value });
-    dispatch(setLeftValue(e.target.value));
+    if (e.target.value.match(/^$|(?<=^| )\d+(\.\d+)?(?=$| )/gm)) {
+      let reg = /^0+/gi;
+      setLeftPanel({ ...leftPanel, inputValue: e.target.value.replace(reg, '1') });
+      dispatch(setLeftValue(e.target.value.replace(reg, '1')));
+    }
   };
   const onChangeRight = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRightPanel({ ...rightPanel, inputValue: e.target.value });
-    dispatch(setRightValue(e.target.value));
+    if (e.target.value.match(/^$|(?<=^| )\d+(\.\d+)?(?=$| )/gm)) {
+      let reg = /^0+/gi;
+      setRightPanel({ ...rightPanel, inputValue: e.target.value.replace(reg, '1') });
+      dispatch(setRightValue(e.target.value.replace(reg, '1')));
+    }
   };
 
   useEffect(() => {
@@ -54,7 +60,7 @@ const App: FC = () => {
       )
         .then((res) => res.json())
         .then((data) => {
-          dispatch(setRightValue(data.result));
+          +leftValue === 0 ? dispatch(setRightValue('0')) : dispatch(setRightValue(data.result));
         });
     };
     fetchExchange();

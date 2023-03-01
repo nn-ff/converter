@@ -20,6 +20,7 @@ const Main: FC<MainProps> = ({ onClickBtn, side, onChangeInput }) => {
     { id: 1, title: 'EUR' },
     { id: 2, title: 'RUB' },
   ];
+
   return (
     <div className="main-item">
       <div className="main-item__title">
@@ -36,8 +37,9 @@ const Main: FC<MainProps> = ({ onClickBtn, side, onChangeInput }) => {
       </div>
       <input
         onChange={onChangeInput}
-        value={value}
+        value={+value}
         type="number"
+        min={1}
         className="main-item__input"
         placeholder="amount"></input>
     </div>
