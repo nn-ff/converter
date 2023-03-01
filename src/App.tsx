@@ -58,7 +58,7 @@ const App: FC = () => {
         });
     };
     fetchExchange();
-  }, [leftPanel]);
+  }, [leftPanel, rightPanel.title]);
   useEffect(() => {
     if (mountRef.current) {
       const fetchExchange = () => {
@@ -74,7 +74,7 @@ const App: FC = () => {
     } else {
       mountRef.current = true;
     }
-  }, [rightPanel]);
+  }, [rightPanel.inputValue]);
 
   return (
     <FullscreenWrapper>
